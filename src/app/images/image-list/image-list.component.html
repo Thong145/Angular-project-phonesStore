@@ -1,0 +1,28 @@
+<table *ngIf="imgList">
+    <tr *ngFor="let i of rowIndexArr">
+        <td>
+            <div class="imagebox" *ngIf="i==0">
+                <a routerLink="/admin/image/upload">
+                <img src="/assets/img/no-image-available.jpg" class="img-fluid">
+                <span class="imagebox-desc">Thêm ảnh mới</span>
+                </a>
+            </div>
+            <div class="imagebox" *ngIf="i!=0">
+                <img [src]="imgList[3*i-1].imgUrl" class="img-fluid">
+                <span class="imagebox-desc">{{imgList[3*i-1].caption}}</span>
+            </div>
+            </td>
+            <td *ngIf="imgList[3*i]">
+            <div class="imagebox">
+                <img [src]="imgList[3*i].imgUrl" class="img-fluid">
+                <span class="imagebox-desc">{{imgList[3*i].caption}}</span>
+            </div>
+            </td>
+            <td *ngIf="imgList[3*i+1]">
+            <div class="imagebox">
+                <img [src]="imgList[3*i+1].imgUrl" class="img-fluid">
+                <span class="imagebox-desc">{{imgList[3*i+1].caption}}</span>
+            </div>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,52 @@
+<form  [formGroup] ="formaddItem">
+    <h2>ADD ITEMS</h2>
+
+    <div class="form-group">
+        <label for="id">ID</label>
+        <input type="text" class="form-control" id="id" aria-describedby="" placeholder="Enter ID" formControlName="id">
+        <div *ngIf="formaddItem.controls['id'].hasError('required') && (formaddItem.controls['id'].dirty||formaddItem.controls['id'].touched)">
+            <small class="form-text text-muted" style="color: red;">ID is invalid!</small>
+        </div>
+      
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+      <div *ngIf="formaddItem.controls['name'].hasError('required') && (formaddItem.controls['name'].dirty||formaddItem.controls['name'].touched)">
+        <small class="form-text text-muted" style="color: red;">Name is invalid!</small>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" placeholder="Description" formControlName="description">
+        
+    </div>
+
+    <div class="form-group">
+      <label for="description">Amount</label>
+      <input type="text" class="form-control" id="amount" placeholder="Amount" formControlName="amount">
+      <div *ngIf="formaddItem.controls['amount'].hasError('required') && (formaddItem.controls['amount'].dirty||formaddItem.controls['amount'].touched)">
+          <small class="form-text text-muted" style="color: red;">Amount is undefine!</small>
+      </div>
+    </div>
+    
+
+    <div class="form-group">
+      <label for="ImportDate">Import Date</label>
+      <input type="date" class="form-control" id="date" placeholder="Import Date" formControlName="date">
+      <div *ngIf="formaddItem.controls['date'].hasError('required') && (formaddItem.controls['date'].dirty||formaddItem.controls['date'].touched)">
+          <small class="form-text text-muted" style="color: red;">Date is undefine!</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Company</label>
+        <input type="text" class="form-control" id="description" placeholder="Company" formControlName="company">
+    </div>
+
+    <div class="btn-form-add">
+        <button class="button btn-info" style="width: 70px; height:40px;" (click)="back()">Back</button>
+        <button style="margin-left: 100px;" type="submit" class="button btn-add"  (click)="add(formaddItem.value)">Add</button>         
+    </div>
+</form>

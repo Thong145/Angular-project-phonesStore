@@ -1,0 +1,54 @@
+<p>insert-node-item works!</p>
+<form  [formGroup] ="insertFrm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input type="text" class="form-control" id="id" aria-describedby="" placeholder="Enter ID" formControlName="id">
+      <div *ngIf="insertFrm.controls['id'].hasError('required') && (insertFrm.controls['id'].dirty||insertFrm.controls['id'].touched)">
+        <small id="IdHelp" class="form-text text-muted" style="color: red;">ID is invalid!</small>
+    </div>
+      
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+      <div *ngIf="insertFrm.controls['name'].hasError('required') && (insertFrm.controls['name'].dirty||insertFrm.controls['name'].touched)">
+        <small id="NameHelp" class="form-text text-muted" style="color: red;">Name is invalid!</small>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" placeholder="Description" formControlName="description">
+        <div *ngIf="insertFrm.controls['description'].hasError('required') && (insertFrm.controls['description'].dirty||insertFrm.controls['description'].touched)">
+            <small id="DescriptionHelp" class="form-text text-muted" style="color: red;">Description is undefine!</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Amount</label>
+      <input type="text" class="form-control" id="amount" placeholder="Amount" formControlName="amount">
+      <div *ngIf="insertFrm.controls['amount'].hasError('required') && (insertFrm.controls['amount'].dirty||insertFrm.controls['amount'].touched)">
+          <small id="DescriptionHelp" class="form-text text-muted" style="color: red;">Description is undefine!</small>
+      </div>
+  </div>
+    
+
+    <div class="form-group">
+      <label for="ImportDate">Import Date</label>
+      <input type="date" class="form-control" id="date" placeholder="Import Date" formControlName="date">
+      <div *ngIf="insertFrm.controls['date'].hasError('required') && (insertFrm.controls['date'].dirty||insertFrm.controls['date'].touched)">
+          <small id="DescriptionHelp" class="form-text text-muted" style="color: red;">Description is undefine!</small>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Company</label>
+    <input type="text" class="form-control" id="description" placeholder="Company" formControlName="company">
+    <div *ngIf="insertFrm.controls['company'].hasError('required') && (insertFrm.controls['company'].dirty||insertFrm.controls['company'].touched)">
+        <small id="DescriptionHelp" class="form-text text-muted" style="color: red;">Description is undefine!</small>
+    </div>
+</div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!insertFrm.valid">Submit</button>
+  </form>

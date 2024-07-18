@@ -1,0 +1,135 @@
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+	</div>
+	<div class="card-body">
+		
+		
+		
+
+		<div class="table-responsive">
+			<div class="single-sidebar">
+				<h2 class="sidebar-title">Search Products</h2>
+				<form [formGroup]="formsearch">
+					<input type="text" placeholder="Search products..." (input)="inputNull()" [(ngModel)]="searchterm" >
+					<input type="submit" value="Search" (click)="Search()">
+				</form>
+			</div>
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Image</th>
+						<th>Amount</th>
+						<th>Import date</th>
+						<th>Company name</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Image</th>
+						<th>Amount</th>
+						<th>Import date</th>
+						<th>Company name</th>
+					</tr>
+				</tfoot>
+				<tbody >
+					<tr *ngFor="let item of items1 ">
+						<td>{{ item.id }}</td>
+						<td>{{item.name}} </td>
+						<td>{{item.Description}} </td>
+						
+						<td  *ngFor="let i of rowIndexArr">
+							<div class="imagebox" *ngIf="imgList">
+								<img [src]="imgList[3*i].imgUrl" class="img-fluid">
+								<span class="imagebox-desc">{{imgList[3*i].caption}}</span>
+							</div>
+						</td>
+						<td>{{ item.amount }}</td>
+						<td>{{ item.date}}</td>
+						<td>{{ item.company }}</td>
+						<td >
+							<div>
+								<button class="btn btn-primary" (click)="edit(item)">Edit</button>
+								<button class="btn btn-danger" (click)="delete($event,item)">Delete</button>
+							</div>
+							
+						</td>
+					</tr>
+					
+					<!-- <tr *ngIf="imgList[3*i]">
+						
+						<td *ngFor="let i of rowIndexArr"><img [src]="imgList[3*i].imgUrl" class="img-fluid">{{imgList[3*i].caption}}</td>
+						
+					</tr> -->
+
+					<!-- <div *ngIf="editState && ToEdit.id== items1.id">
+						<form [formGroup]="formupdate">
+							<table class="update-form">
+								<h2>UPDATE</h2>
+								
+								<div class="card-header">
+									<div class="card-body">
+										<label  > Name:</label><br>
+										<input type="text"  size="25" formControlName="name" 
+											[(ngModel)]="items1.name"><br>
+									</div>
+									<div class="card-body">
+										<label  >Description:</label><br>
+										<input type="text" size="25" formControlName="Description"
+											[(ngModel)]="items1.Description"><br>
+									</div>
+								</div>
+								<div class="card-header">
+									<div class="card-body">
+										<label >Amount</label><br>
+										<input type="text" size="25" formControlName="amount"
+											[(ngModel)]="items1.amount"><br>
+									</div>
+									<div>
+										<label >Import Date:</label><br>
+										<input type="date" size="75" formControlName="date"
+											[(ngModel)]="items1.date"><br>
+									</div>
+								</div>
+								<div>
+									<label >Company</label><br>
+									<input type="number" name="experience" size="75" formControlName="company" 
+										[(ngModel)]="items1.company"><br>
+								</div>
+								
+		
+								<div>
+		
+									<button type="submit" (click)="update(formupdate.value)">
+										UPDATE
+									</button>
+									<button> <a class="" (click)="back()">Back</a></button>
+								</div>
+							</table>
+	
+						</form>
+					</div> -->
+				</tbody>
+			</table>
+			<button  (click)="add()"  class="btn btn-info">
+                <a  style="color: white;">
+                    
+                    <span>Add</span></a>
+            </button>
+			<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+		</div>
+
+		<!-- <div *ngIf="items1?.length < 1"><p>Không tìm thấy sản phẩm</p></div> -->
+	</div>
+</div>
+
+
+

@@ -1,0 +1,41 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+            <div class="text-center">
+                <img [src]="imgSrc" width="300px" height="200px" (click)="fileUploader.click()">
+            </div>
+            <div class="form-group">
+                <label>Chọn file ảnh</label>
+                <input type="file" accept="image/*" class="form-control" #fileUploader formControlName="imgUrl" (change)="showPreview($event)">
+                <div class="test-danger" >This field is required.</div>
+            </div>
+            <div class="form-group">
+                <input class="form-control" formControlName="caption" placeholder="Caption">
+                <div class="test-danger" >This field is required.</div>
+            </div>
+            <div class="form-group">
+                <select formControlName="category" class="form-control">
+                    <option value="Samsung">Samsung</option>
+                    <option value="Oppo">Oppo</option>
+                    <option value="Apple">Iphone</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+            <div class="form-group col-md-4">
+                <a routerLink="/admin/imagelist" class="btn btn-secondary btn-block float-right" style="height: 45px; font-size:medium;">Go to Gallery</a>
+            </div>
+
+            <div class="form-group col-md-4">
+                <a routerLink="/admin" class="btn btn-info btn-block float-right" style="height: 45px; font-size:medium;">Go to Homepage</a>
+            </div>
+            
+            <div class="form-group col-md-4">
+                <button type="submit" class="btn btn-success btn-block float-right" style="font-size:medium;">Submit</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
